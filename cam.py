@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO ################# CROSS CHECK WHAT WORKS ON PI 0 W ###########################################
 from picamera import PiCamera
+import time
 
 # Setup Var
 SEN_PIN = 4 ## USE BCM BOARD NUMBERING (pinout.xyz)
@@ -13,32 +14,27 @@ camera = PiCamera()
 camera.framerate = FPS
 camera.resolution = (cameraWidth, cameraHeight)
 
+
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(SEN_PIN, GPIO.IN)
-
-
-def sensor_change(pin):
-    recording = False
-    
-    if recording(True):
-        
- 
- 
- 
- 
-
 # camera.rotation = 180 #would correct for the sensor being sideways. not sure if needed yet. 
 
 
+
+def sensor_change(pin):
+    lastSenEvent = 0
+    if (lastSenEvent - now ) > 0.5: # checks to see if already recording
+        
+        now = time.time()
+        fName = time.strftime("%y-%m-%d %H-%M-%S")
+        
+        camera.start_recording(fName, format='h264')
+        lastSenEvent = now # makes it so it woulnt run twice
+        print("Recording " + fName)
+    else:
+        camera.stop_recording()
 # Main
 
 GPIO.add_event_detect(SEN_PIN, GPIO.BOTH, sensor_change)
-
-
-
-
-camera.start_recording(format='h264')
-camera.stop_recording()
-
-
 
