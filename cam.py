@@ -27,7 +27,7 @@ def sensor_change(pin):
     if (lastSenEvent - now ) > 0.5: # checks to see if already recording
         
         now = time.time()
-        fName = time.strftime("%y-%m-%d %H-%M-%S")
+        fName = time.strftime("%y-%m-%d %H-%M-%S"+".h264")
         
         camera.start_recording(fName, format='h264')
         lastSenEvent = now # makes it so it woulnt run twice
@@ -37,4 +37,10 @@ def sensor_change(pin):
 # Main
 
 GPIO.add_event_detect(SEN_PIN, GPIO.BOTH, sensor_change)
+
+while True:
+    time.sleep(1)
+
+
+
 
