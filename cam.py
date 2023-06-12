@@ -4,6 +4,8 @@ import time
 
 # Setup Var
 SEN_PIN = 17 ## USE BCM BOARD NUMBERING (pinout.xyz) Sensor Pin
+
+
 FPS = 24 ## either 24 or 30 not sure yet
 cameraWidth = 1920
 cameraHeight = 1080
