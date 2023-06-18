@@ -17,7 +17,7 @@ def calculate_average_pixel_value(image):
 def is_dark(pixel_value):
     # Check if the pixel value is considered dark based on your criteria
     # You can adjust the threshold values as per your requirement
-    darkness_threshold = 50  # Adjust this value as needed
+    darkness_threshold = 10  # Adjust this value as needed
     return pixel_value < darkness_threshold
 
 def record_when_light():
