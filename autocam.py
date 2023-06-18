@@ -17,12 +17,12 @@ def calculate_average_pixel_value(image):
 def is_dark(pixel_value):
     # Check if the pixel value is considered dark based on your criteria
     # You can adjust the threshold values as per your requirement
-    darkness_threshold = 50  # Adjust this value as needed
+    darkness_threshold = 50  # Adjust this value as needed <---------------------- IF PROBLEM CHECK HERE
     return pixel_value < darkness_threshold
 
 def record_when_light():
-    fps = 30  # Adjust the desired frames per second
-    resolution = (640, 480)  # Adjust the desired resolution
+    fps = 24  # Adjust the desired frames per second
+    resolution = (1920, 1080)  # Adjust the desired resolution OLD 640, 480
     
     with picamera.PiCamera() as camera:
         camera.resolution = resolution
