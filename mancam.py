@@ -1,9 +1,9 @@
-import RPi.GPIO as GPIO ################# CROSS CHECK WHAT WORKS ON PI 0 W ###########################################
+import RPi.GPIO as GPIO
 from picamera import PiCamera
 import time
 
 # Setup Var
-SEN_PIN = 17 ## USE BCM BOARD NUMBERING (pinout.xyz) Sensor Pin
+Sen_Pin = 6 ## USE BCM BOARD NUMBERING (pinout.xyz) Sensor Pin
 
 
 FPS = 24 ## either 24 or 30 not sure yet
@@ -16,45 +16,38 @@ camera = PiCamera()
 camera.framerate = FPS
 camera.resolution = (cameraWidth, cameraHeight)
 
-
-
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(SEN_PIN, GPIO.IN)
-# camera.rotation = 180 #would correct for the sensor being sideways. not sure if needed yet. 
+# Set GPIO pin 6 as input
+GPIO.setup(Sen_Pin, GPIO.IN)
 
-while True:
-    if GPIO.input(SEN_PIN):
+# Function to start recording
+def start_recording():
+    global is_recording
+    if not is_recording:
+        is_recording = True
+        
         fName = time.strftime("%y-%m-%d %H-%M-%S"+".h264")
         camera.start_recording(fName, format='h264')
-        print("Started Recording!")
         
-    else:
-        print("Waiting...")
-    time.sleep(1)
-"""
+        print("Recording started.")
 
-
-def sensor_change(pin):
-    lastSenEvent = 0
-    if (lastSenEvent - now ) > 0.5: # checks to see if already recording
-        
-        now = time.time()
-        fName = time.strftime("%y-%m-%d %H-%M-%S"+".h264")
-        
-        camera.start_recording(fName, format='h264')
-        lastSenEvent = now # makes it so it woulnt run twice
-        print("Recording " + fName)
-    else:
+# Function to stop recording
+def stop_recording():
+    global is_recording
+    if is_recording:
+        is_recording = False
         camera.stop_recording()
-# Main
+        print("Recording stopped.")
 
-GPIO.add_event_detect(SEN_PIN, GPIO.BOTH, sensor_change)
-
-
-"""
+# Main program loop
 while True:
-    time.sleep(1)
+    # Read the state of the switch
+    switch_state = GPIO.input(Sen_Pin)
 
+    # If the switch is enabled (ON) and not already recording, start recording
+    if switch_state == GPIO.HIGH:
+        start_recording()
 
-
-
+    # If the switch is disabled (OFF) and currently recording, stop recording
+    if switch_state == GPIO.LOW:
+        stop_recording()
