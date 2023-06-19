@@ -1,0 +1,3 @@
+nohup python video_capture.py & -starts recording detached in terminal
+python stop_video_capture.py    - stops the detached recording
+python \home\Documents\webstream.py

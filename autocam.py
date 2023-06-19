@@ -53,6 +53,6 @@ def record_when_light():
                     camera.start_recording(video_file)
                     print("Started Recording.")
             
-            time.sleep(1)  # Wait for 1 second before capturing the next frame
-
+            time.sleep(2)  # Wait for 1 second before capturing the next frame
+time.sleep(180) #waits for pi to load up for launching on boot
 record_when_light()
