@@ -21,8 +21,8 @@ def is_dark(pixel_value):
     return pixel_value < darkness_threshold
 
 def record_when_light():
-    fps = 30  # Adjust the desired frames per second
-    resolution = (640, 480)  # Adjust the desired resolution
+    fps = 18  # Adjust the desired frames per second
+    resolution = (1920, 1080)  # Adjust the desired resolution
     
     with picamera.PiCamera() as camera:
         camera.resolution = resolution
