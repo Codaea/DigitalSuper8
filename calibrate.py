@@ -34,7 +34,7 @@ def find_val():
             # Calculate the average pixel value
             pixel_value = calculate_average_pixel_value(image)
             # Print Value to console
-            result = f"{pixel_value} SO.. {is_dark(pixel_value)}"
+            result = f"{pixel_value} SO.. IS DARK TRUE? {is_dark(pixel_value)}"
             print(result)
             time.sleep(1)
 
