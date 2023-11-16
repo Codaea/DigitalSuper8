@@ -48,7 +48,7 @@ Hardware Problems:
 
 Software Problems:
 
-- I was having trouble with the autocam.py being CPU intensive so the short term solution was to just make it accessible via ssh where one script started recording in background and the second stopped recording. Will leave files for that probably on a separate branch or folder.
+- I was having trouble with the autocam.py being CPU intensive so the short term solution was to just make it accessible via ssh where one script started recording in background and the second stopped recording. Will leave files for that probably on a separate branch or folder. (MOSTLY SOLVED, can be shortened to me being a dumbass on read write operations.)
 
 
 # The Hardware
@@ -195,7 +195,7 @@ If you haven't done this it's up in the Connecting the Camera To Raspberry pi se
 To test, run Raspistill –o image.jpg
 
 
-## Creating a file sharing server and setting up permissions (Mamba)
+## Creating a file sharing server and setting up permissions (Samba)
 
 
 ## Downloading Code to Raspberry Pi
