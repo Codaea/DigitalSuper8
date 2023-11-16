@@ -218,3 +218,5 @@ To test, run Raspistill –o image.jpg
 
 
 # Closing Thoughts
+
+I am currently working on a (hopefully) better version of the orignal, there are plans to attempt to fix focus issues along with fitting it all into a circuit board to minimize soldering. or to just make it work better in general.
