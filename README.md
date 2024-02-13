@@ -75,7 +75,7 @@ Software Problems:
 
 ## 3D Printed Parts
 
-You can get the 3D files **here**
+You can get the 3D files [**here**](https://www.thingiverse.com/thing:6085558)
 
 These are the settings that i used on my Ender 3 v2
 
